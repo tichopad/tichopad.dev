@@ -1,15 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-
 import Body from 'components/Body';
 import Header from 'components/Header';
 import SEO from 'components/SEO';
-import PostsListItem from 'components/PostsListItem';
+import IndexPost from 'components/IndexPost';
 import Footer from 'components/Footer';
 
 export default function Index({ data }) {
   const { edges } = data.allMarkdownRemark;
-  const postsList = edges.map(edge => <PostsListItem key={edge.node.id} post={edge.node} />);
+  const postsList = edges.map(edge => <IndexPost key={edge.node.id} post={edge.node} />);
 
   return (
     <>

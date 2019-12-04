@@ -1,16 +1,14 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-
-import Body from 'components/Body';
 import SEO from 'components/SEO';
-import PostBottomNavigation from 'components/PostBottomNavigation';
+import PostBody from 'components/PostBody';
 
 export default function Post({ data, pageContext }) {
   const post = data.markdownRemark;
   const { previous, next } = pageContext;
 
   return (
-    <Body>
+    <PostBody previous={previous} next={next}>
       <SEO title={post.frontmatter.title} />
       <h4>
         <Link to="/">
@@ -24,8 +22,7 @@ export default function Post({ data, pageContext }) {
         </small>
       </p>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
-      <PostBottomNavigation previous={previous} next={next} />
-    </Body>
+    </PostBody>
   );
 }
 

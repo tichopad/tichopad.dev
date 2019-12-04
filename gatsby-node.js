@@ -17,7 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const results = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             fields {
@@ -25,6 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
+              date
             }
           }
         }

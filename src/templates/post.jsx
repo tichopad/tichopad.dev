@@ -5,11 +5,11 @@ import PostBody from 'components/PostBody';
 
 export default function Post({ data, pageContext }) {
   const post = data.markdownRemark;
-  const { previous, next } = pageContext;
+  const { previous, next, slug } = pageContext;
 
   return (
     <PostBody previous={previous} next={next}>
-      <SEO title={post.frontmatter.title} />
+      <SEO title={post.frontmatter.title} pathname={slug} type="article" />
       <h4>
         <Link to="/">
           ←tichopad<small>.dev</small>

@@ -3,6 +3,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
+
   if (node.internal.type === 'MarkdownRemark') {
     const slug = createFilePath({ node, getNode, basePath: 'pages' });
     createNodeField({
@@ -42,8 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: node.fields.slug,
       component: path.resolve('./src/templates/post.jsx'),
       context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
+        // Data passed to context is available in page queries as GraphQL variables and in as a "pageContext" prop
         slug: node.fields.slug,
         previous,
         next,

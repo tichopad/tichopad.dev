@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'tichopad.dev',
-    url: 'https://tichopad.dev/',
+    url: 'https://tichopad.dev',
     author: {
       name: 'Michael Tichopád',
       email: 'michael@tichopad.dev',

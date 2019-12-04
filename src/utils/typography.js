@@ -1,6 +1,7 @@
 import Typography from 'typography';
 import altonTheme from 'typography-theme-lincoln';
 
+// Site typography configuration
 const typography = new Typography({
   ...altonTheme,
   headerFontFamily: ['Merriweather', 'serif'],

@@ -6,10 +6,10 @@ const randomColorThrottled = throttle(randomColor, 200);
 
 export default function RandomColorText({ children, defaultColor = null }) {
   const [color, setColor] = useState(defaultColor);
-  const handleMouseEnter = () => setColor(randomColorThrottled());
+  const changeColor = () => setColor(randomColorThrottled());
 
   return (
-    <span style={{ color }} onMouseEnter={handleMouseEnter}>
+    <span style={{ color }} onMouseEnter={changeColor} onTouchStart={changeColor}>
       {children}
     </span>
   );

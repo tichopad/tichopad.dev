@@ -35,7 +35,7 @@ export const query = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM Do, YYYY")
+        date(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
       }
     }
   }

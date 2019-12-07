@@ -9,7 +9,15 @@ export default function Post({ data, pageContext }) {
 
   return (
     <PostBody previous={previous} next={next}>
-      <SEO title={post.frontmatter.title} pathname={slug} type="article" />
+      <SEO
+        title={post.frontmatter.title}
+        pathname={slug}
+        type="article"
+        description={post.excerpt}
+        datePublished={post.frontmatterOriginal.published}
+        dateUpdated={post.frontmatterOriginal.updated}
+        isBlogPost={true}
+      />
       <h4>
         <Link to="/">
           ←tichopad<small>.dev</small>
@@ -18,7 +26,7 @@ export default function Post({ data, pageContext }) {
       <h1>{post.frontmatter.title}</h1>
       <p>
         <small>
-          <time>{post.frontmatter.date}</time>
+          <time>{post.frontmatter.published}</time>
         </small>
       </p>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -32,8 +40,13 @@ export const query = graphql`
       html
       frontmatter {
         title
-        date(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
+        published(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
       }
+      frontmatterOriginal: frontmatter {
+        published
+        updated
+      }
+      excerpt(pruneLength: 120)
     }
   }
 `;

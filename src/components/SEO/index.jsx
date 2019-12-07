@@ -1,8 +1,19 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
+import SchemaOrg from './SchemaOrg';
 
-export default function SEO({ title, pathname = '', type = 'website', children }) {
+export default function SEO({
+  children,
+  title,
+  datePublished,
+  dateUpdated,
+  meta = [],
+  pathname = '',
+  description = 'Osobní blog Michaela Tichopáda.',
+  type = 'website',
+  isBlogPost = false,
+}) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -10,32 +21,46 @@ export default function SEO({ title, pathname = '', type = 'website', children }
           siteMetadata {
             title
             url
+            author {
+              name
+            }
           }
         }
       }
     `
   );
-  const { title: defaultTitle, url: baseUrl } = data.site.siteMetadata;
+  const { title: defaultTitle, url: baseUrl, author } = data.site.siteMetadata;
   const canonicalUrl = `${baseUrl}${pathname}`;
   const composedTitle = (title ? `${title} - ` : '') + defaultTitle;
+  const composedMeta = [
+    {
+      name: 'viewport',
+      content: 'width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover',
+    },
+    { name: 'description', content: description },
+    { property: 'og:title', content: title },
+    { property: 'og:description', content: description },
+    { property: 'og:url', content: canonicalUrl },
+    { property: 'og:type', content: type },
+    ...meta,
+  ];
 
   return (
-    <Helmet title={composedTitle} defaultTitle={defaultTitle}>
-      {/* General tags */}
-      <html lang="cs" />
-      <link rel="canonical" href={canonicalUrl} />
-      <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+    <>
+      <Helmet title={composedTitle} defaultTitle={defaultTitle} meta={composedMeta}>
+        <html lang="cs" />
+        <link rel="canonical" href={canonicalUrl} />
+        {children}
+      </Helmet>
+      <SchemaOrg
+        title={title}
+        authorName={author.name}
+        description={description}
+        datePublished={datePublished}
+        dateModified={dateUpdated}
+        canonicalUrl={canonicalUrl}
+        isBlogPost={isBlogPost}
       />
-      <meta name="description" content="Osobní blog Michaela Tichopáda." />
-      {/* OpenGraph tags */}
-      <meta property="og:title" content={composedTitle} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:type" content={type} />
-      <meta property="og:description" content="TODO:" />
-      <meta property="og:image" content="TODO:" />
-      {children}
-    </Helmet>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 ---
 title: 'Životaschopné povlak svět'
-date: '2019-11-02'
+published: '2019-11-02'
 ---
 
 _Přicházejí ne čím i noc kraken některé, skončila i starověké nejrůznějších._

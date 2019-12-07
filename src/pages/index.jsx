@@ -24,13 +24,13 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___published], order: DESC }) {
       edges {
         node {
           id
           frontmatter {
             title
-            date(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
+            published(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
           }
           fields {
             slug

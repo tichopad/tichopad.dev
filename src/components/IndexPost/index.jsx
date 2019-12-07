@@ -8,7 +8,7 @@ export default function IndexPost({ post }) {
       <h2>
         <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
       </h2>
-      <time className={styles.date}>{post.frontmatter.date}</time>
+      <time className={styles.date}>{post.frontmatter.published}</time>
       <p>{post.excerpt}</p>
     </article>
   );

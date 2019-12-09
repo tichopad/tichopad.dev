@@ -1,5 +1,17 @@
 import React from 'react';
 
+/**
+ * Creates schema.org JSON+LD metadata object.
+ * @param {{
+ *  canonicalUrl: String,
+ *  title: String,
+ *  datePublished: String,
+ *  dateModified: String,
+ *  authorName: String,
+ *  description: String,
+ *  isBlogPost: Boolean
+ * }} props
+ */
 export default function SchemaOrg({
   canonicalUrl,
   title,

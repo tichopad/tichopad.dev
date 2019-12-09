@@ -1,8 +1,13 @@
+/** @typedef {import('typedef').Post} Post */
 import React from 'react';
 import Body from 'components/Body';
 import { Link } from 'gatsby';
 import styles from './PostBody.module.scss';
 
+/**
+ * Post-detail body layout component with navigation to previous/next posts.
+ * @param {{ previous: Post, next: Post, children: React.ReactNode }} props
+ */
 export default function PostBody({ previous, next, children }) {
   return (
     <Body>

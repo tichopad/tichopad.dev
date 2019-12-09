@@ -4,6 +4,9 @@ import styles from './Header.module.scss';
 import RandomColorText from 'components/RandomColorText';
 import ExternalLink from 'components/ExternalLink';
 
+/**
+ * Header layout component
+ */
 export default function Header() {
   const data = useStaticQuery(
     graphql`

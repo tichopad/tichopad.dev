@@ -3,6 +3,20 @@ import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import SchemaOrg from './SchemaOrg';
 
+/**
+ * SEO component. Adds link, meta and JSON+LD data to head.
+ * @param {{
+ *  children: React.ReactNode,
+ *  title: String,
+ *  datePublished: String,
+ *  dateUpdated: String,
+ *  meta: Array<Object>,
+ *  pathname: String,
+ *  description: String,
+ *  type: String,
+ *  isBlogPost: Boolean
+ * }} props
+ */
 export default function SEO({
   children,
   title,

@@ -11,10 +11,10 @@ export default function IndexPost({ post }) {
   return (
     <article key={post.id}>
       <h2>
-        <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
+        <Link to={post.fields.slug}>{post.meta.title}</Link>
       </h2>
-      <time className={styles.date}>{post.frontmatter.published}</time>
-      <p>{post.excerpt}</p>
+      <time className={styles.date}>{post.metaFormatted.published}</time>
+      <p>{post.meta.perex || post.excerpt}</p>
     </article>
   );
 }

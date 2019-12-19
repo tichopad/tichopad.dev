@@ -23,21 +23,9 @@ export default function Index({ data }) {
 }
 
 export const query = graphql`
-  query {
+  query AllPosts {
     allMarkdownRemark(sort: { fields: [frontmatter___published], order: DESC }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            published(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
-          }
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 120)
-        }
-      }
+      ...Posts
     }
   }
 `;

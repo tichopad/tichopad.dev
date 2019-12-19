@@ -1,6 +1,7 @@
 ---
-title: 'Životaschopné povlak svět'
-published: '2019-11-02'
+title: Životaschopné povlak svět
+published: 2019-11-02
+perex: Kurzy už najdete u pobřežních molekulou kostel.
 ---
 
 _Přicházejí ne čím i noc kraken některé, skončila i starověké nejrůznějších._

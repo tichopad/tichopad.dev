@@ -10,12 +10,12 @@ export default function Post({ data, pageContext }) {
   return (
     <PostBody previous={previous} next={next}>
       <SEO
-        title={post.frontmatter.title}
+        title={post.meta.title}
         pathname={slug}
         type="article"
         description={post.excerpt}
-        datePublished={post.frontmatterOriginal.published}
-        dateUpdated={post.frontmatterOriginal.updated}
+        datePublished={post.metaFormatted.published}
+        dateUpdated={post.metaFormatted.updated}
         isBlogPost={true}
       />
       <h4>
@@ -23,10 +23,10 @@ export default function Post({ data, pageContext }) {
           ←tichopad<small>.dev</small>
         </Link>
       </h4>
-      <h1>{post.frontmatter.title}</h1>
+      <h1>{post.meta.title}</h1>
       <p>
         <small>
-          <time>{post.frontmatter.published}</time>
+          <time dateTime={post.meta.published}>{post.metaFormatted.published}</time>
         </small>
       </p>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -35,18 +35,9 @@ export default function Post({ data, pageContext }) {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query PostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        published(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
-      }
-      frontmatterOriginal: frontmatter {
-        published
-        updated
-      }
-      excerpt(pruneLength: 120)
+      ...Post
     }
   }
 `;

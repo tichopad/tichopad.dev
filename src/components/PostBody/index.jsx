@@ -16,14 +16,14 @@ export default function PostBody({ previous, next, children }) {
         {previous && (
           <h4 className={styles.navigationLinkPrev}>
             <Link to={previous.fields.slug} role="prev">
-              ←{previous.frontmatter.title}
+              ←{previous.meta.title}
             </Link>
           </h4>
         )}
         {next && (
           <h4 className={styles.navigationLinkNext}>
             <Link to={next.fields.slug} role="next">
-              {next.frontmatter.title}→
+              {next.meta.title}→
             </Link>
           </h4>
         )}

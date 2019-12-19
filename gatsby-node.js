@@ -24,7 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               slug
             }
-            frontmatter {
+            meta: frontmatter {
               title
             }
           }

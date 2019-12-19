@@ -4,8 +4,14 @@ export interface Post {
   fields: {
     slug: String;
   };
-  frontmatter: {
+  meta: {
     title: String;
     published: String;
+    updated: String;
+    perex: String;
+  };
+  metaFormatted: {
+    published: String;
+    updated: String;
   };
 }

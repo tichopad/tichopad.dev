@@ -1,9 +1,11 @@
+/** @typedef {import('typedef').Post} Post */
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import SEO from 'components/SEO';
 import PostBody from 'components/PostBody';
 
 export default function Post({ data, pageContext }) {
+  /** @type {Post} post */
   const post = data.markdownRemark;
   const { previous, next, slug } = pageContext;
 

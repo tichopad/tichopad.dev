@@ -1,9 +1,9 @@
 import Typography from 'typography';
-import altonTheme from 'typography-theme-lincoln';
+import lincolnTheme from 'typography-theme-lincoln';
 
 // Site typography configuration
 const typography = new Typography({
-  ...altonTheme,
+  ...lincolnTheme,
   headerFontFamily: ['Merriweather', 'serif'],
   bodyFontFamily: ['Lora', 'serif'],
   googleFonts: [

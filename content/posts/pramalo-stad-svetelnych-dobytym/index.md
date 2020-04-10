@@ -21,8 +21,8 @@ result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       // in page queries as GraphQL variables.
       slug: node.fields.slug,
     },
-  });
-});
+  })
+})
 ```
 
 ## Nacházeli společných

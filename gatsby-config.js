@@ -31,7 +31,6 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
-              // wrapperStyle: `margin: 1.58rem 0;`,
             },
           },
           {
@@ -53,8 +52,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'src/utils/typography',
+        pathToConfigModule: `${__dirname}/src/utils/typography`,
       },
     },
   ],
-};
+}

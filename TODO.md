@@ -1,12 +1,7 @@
-- ~~Perex metadata ve článku~~
 - Propsat datum aktualizace do článku?
-- Kulaté rohy obrázků
-- ~~Přejmenovat query "frontmatterOriginal" na frontmatter. Formátované výsledky pak můžou být třeba "formatted"?~~
-- ~~Přidat query fragmenty~~
-- Dostat query fragmenty do gatsby-node.js?
 - Font uložit lokálně přes typeface balíček
 - Vytvořit grafiku pro OG image + favicon
 - Zmigrovat články
-- Přepsat do TS
+- Přepsat do TS?
 - Stránkování frontpage?
 - Překlady?

@@ -1,5 +1,6 @@
 export interface Post {
   id: Number;
+  html: String;
   excerpt: String;
   fields: {
     slug: String;

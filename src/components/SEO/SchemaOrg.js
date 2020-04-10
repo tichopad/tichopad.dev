@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 /**
  * Creates schema.org JSON+LD metadata object.
@@ -12,21 +12,21 @@ import React from 'react';
  *  isBlogPost: Boolean
  * }} props
  */
-export default function SchemaOrg({
+const SchemaOrg = ({
   canonicalUrl,
   title,
   datePublished,
   dateModified,
   authorName,
   description,
-  isBlogPost,
-}) {
+  isBlogPost = false,
+}) => {
   const baseData = {
     '@context': 'https://schema.org/',
     '@type': 'WebSite',
     url: canonicalUrl,
     name: title,
-  };
+  }
   const articleData = {
     '@context': 'https://schema.org/',
     '@type': 'BlogPosting',
@@ -43,8 +43,10 @@ export default function SchemaOrg({
       '@type': 'Person',
       name: authorName,
     },
-  };
-  const structuredData = isBlogPost ? { ...baseData, ...articleData } : baseData;
+  }
+  const structuredData = isBlogPost ? { ...baseData, ...articleData } : baseData
 
-  return <script type="application/ld+json">{JSON.stringify(structuredData, null, 2)}</script>;
+  return <script type="application/ld+json">{JSON.stringify(structuredData, null, 2)}</script>
 }
+
+export default SchemaOrg

@@ -1,7 +1,21 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql, useStaticQuery } from 'gatsby';
-import SchemaOrg from './SchemaOrg';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { graphql, useStaticQuery } from 'gatsby'
+import SchemaOrg from './SchemaOrg'
+
+const GET_SITE_METADATA = graphql`
+  query GetSiteMetadata {
+    site {
+      siteMetadata {
+        title
+        url
+        author {
+          name
+        }
+      }
+    }
+  }
+`
 
 /**
  * SEO component. Adds link, meta and JSON+LD data to head.
@@ -17,7 +31,7 @@ import SchemaOrg from './SchemaOrg';
  *  isBlogPost: Boolean
  * }} props
  */
-export default function SEO({
+const SEO = ({
   children,
   title,
   datePublished,
@@ -27,25 +41,11 @@ export default function SEO({
   description = 'Osobní blog Michaela Tichopáda.',
   type = 'website',
   isBlogPost = false,
-}) {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            url
-            author {
-              name
-            }
-          }
-        }
-      }
-    `
-  );
-  const { title: defaultTitle, url: baseUrl, author } = data.site.siteMetadata;
-  const canonicalUrl = `${baseUrl}${pathname}`;
-  const composedTitle = (title ? `${title} - ` : '') + defaultTitle;
+}) => {
+  const data = useStaticQuery(GET_SITE_METADATA)
+  const { title: defaultTitle, url: baseUrl, author } = data.site.siteMetadata
+  const canonicalUrl = `${baseUrl}${pathname}`
+  const composedTitle = (title ? `${title} - ` : '') + defaultTitle
   const composedMeta = [
     {
       name: 'viewport',
@@ -57,7 +57,7 @@ export default function SEO({
     { property: 'og:url', content: canonicalUrl },
     { property: 'og:type', content: type },
     ...meta,
-  ];
+  ]
 
   return (
     <>
@@ -76,5 +76,7 @@ export default function SEO({
         isBlogPost={isBlogPost}
       />
     </>
-  );
+  )
 }
+
+export default SEO

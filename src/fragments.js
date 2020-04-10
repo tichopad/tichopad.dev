@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
 
 /**
  * Post metadata - original fields
@@ -12,7 +12,7 @@ export const postMetadata = graphql`
       perex
     }
   }
-`;
+`
 
 /**
  * Post metadata - formatted fields
@@ -24,7 +24,7 @@ export const postMetadataFormatted = graphql`
       updated(formatString: "Do MMMM, YYYY", locale: "cs-CZ")
     }
   }
-`;
+`
 
 /**
  * Single post
@@ -40,17 +40,15 @@ export const post = graphql`
     ...PostMetadata
     ...PostMetadataFormatted
   }
-`;
+`
 
 /**
  * All posts
  */
 export const posts = graphql`
   fragment Posts on MarkdownRemarkConnection {
-    edges {
-      node {
-        ...Post
-      }
+    nodes {
+      ...Post
     }
   }
-`;
+`
